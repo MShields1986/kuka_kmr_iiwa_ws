@@ -1,0 +1,3 @@
+# Create yourself an auth token with repo level access at https://github.com/settings/tokens
+GIT_USER_NAME=MShields1986
+GIT_ACCESS_TOKEN=YOUR_AUTH_TOKEN
