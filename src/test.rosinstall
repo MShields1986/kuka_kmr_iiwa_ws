@@ -1,0 +1,90 @@
+- git:
+    uri: https://github.com/AprilRobotics/apriltag_ros.git
+    local-name: apriltag_ros
+#    branch: master
+#    commit: 94b3b843324f6b64edc6ca59f9729e9021308406
+- git:
+    uri: https://github.com/tesseract-robotics/boost_plugin_loader.git
+    local-name: boost_plugin_loader
+#    branch: (HEAD detached at 0.1.1)
+#    commit: 46ac798ea17010b3d514538e7c0178003d34e03e
+- git:
+    uri: https://github.com/UoS-EEE-Automation/eddyfi_ectane_ros.git
+    local-name: eddyfi_ectane_ros
+#    branch: main
+#    commit: 43325f9a436c1c6e153433b6c3d713aa0f8ef697
+- git:
+    uri: https://github.com/UoS-EEE-Automation/eddyfi_ectane_sdk_ros.git
+    local-name: eddyfi_ectane_sdk_ros
+#    branch: main
+#    commit: d1907535e782b077fe7b5efb4b23ce6a10bcb0c9
+- git:
+    uri: https://github.com/UoS-EEE-Automation/fixture_tracker.git
+    local-name: fixture_tracker
+#    branch: main
+#    commit: fb7fd488ff1246ae3bcd08ffc4635b00de732ac2
+- git:
+    uri: https://github.com/MShields1986/iiwa_stack.git
+    local-name: iiwa_stack
+#    branch: master
+#    commit: ad739b7e0f09e202e29abb48d93b2e23c5e0c3be
+- git:
+    uri: https://github.com/iralabdisco/ira_laser_tools
+    local-name: ira_laser_tools
+#    branch: ros1-master
+#    commit: 958d0ac8e103822ce9ce04c0bb9c3b499322575d
+- git:
+    uri: https://github.com/UoS-EEE-Automation/kmr_iiwa_coupled_motion_controller.git
+    local-name: kmr_iiwa_coupled_motion_controller
+#    branch: main
+#    commit: 1a4d0b48575c3885f3e51c0570c8998a1655e56d
+- git:
+    uri: https://github.com/UoS-EEE-Automation/kmr_iiwa_ifl.git
+    local-name: kmr_iiwa_ifl
+#    branch: main
+#    commit: a81531ad2c7c6ec023d88426e2d23a3312a60fee
+- git:
+    uri: https://github.com/UoS-EEE-Automation/kmr_iiwa_ifl_behavior_tree.git
+    local-name: kmr_iiwa_ifl_behavior_tree
+#    branch: main
+#    commit: 07de3aee6eb799bb8a6c474a0c0be9e610a2a4ca
+- git:
+    uri: https://github.com/UoS-EEE-Automation/kmriiwa_ros_stack.git
+    local-name: kmriiwa_ros_stack
+#    branch: feature/IFL_iiwa_integration
+#    commit: ee322f4831bca9f566dc01b84d732628b5b43530
+- git:
+    uri: https://github.com/UoS-EEE-Automation/kmriiwa_tooled.git
+    local-name: kmriiwa_tooled
+#    branch: lf_ec_probe
+#    commit: 46f61ae5cb1810096fefa6634118723685b93b91
+- git:
+    uri: https://github.com/ros-industrial/noether.git
+    local-name: noether
+#    branch: (HEAD detached at e0b5b17)
+#    commit: e0b5b17c08e545bff471d9878ba43b3bd25ae27b
+- git:
+    uri: https://github.com/UoS-EEE-Automation/noether_client.git
+    local-name: noether_client
+#    branch: main
+#    commit: aef830a430e088e2369b3bc57e5bd424ffef4180
+- git:
+    uri: https://github.com/MShields1986/realsense_launch.git
+    local-name: realsense_launch
+#    branch: main
+#    commit: 0c40f2100ae7bdcdf7bff9c6a50dfb4a25de2d1d
+- git:
+    uri: https://github.com/ros-industrial/ros_industrial_cmake_boilerplate.git
+    local-name: ros_industrial_cmake_boilerplate
+#    branch: master
+#    commit: ae129076951b74096e435d77bc4bf0c0fbbee2d5
+- git:
+    uri: https://github.com/UoS-EEE-Automation/vdbfusion_ros.git
+    local-name: vdbfusion_ros
+#    branch: kmr_iiwa_integration
+#    commit: 58b55e2946dc9b45f759002443de4b9a2ab1baa8
+- git:
+    uri: https://github.com/UoS-EEE-Automation/view_planner.git
+    local-name: view_planner
+#    branch: main
+#    commit: 2d0d19f46e522de0999b7d7783a16174ebed6396

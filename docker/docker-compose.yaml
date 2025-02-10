@@ -1,0 +1,30 @@
+version: "3.9"
+
+name: on-robot
+
+services:
+  on-robot:
+    environment:
+      - on-robot
+    env_file:
+    - .env
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        - GIT_USER_NAME=${GIT_USER_NAME}
+        - GIT_ACCESS_TOKEN=${GIT_ACCESS_TOKEN}
+    #deploy:
+    #  resources:
+    #    limits:
+    #      cpus: '0.001'
+    #      memory: 500M
+    #    reservations:
+    #      cpus: '0.0001'
+    #      memory: 100M
+    network_mode: host
+    ipc: host
+    volumes:
+      - ./src:/catkin_ws/src
+    command: sleep infinity
+    #command: roslaunch kmr_iiwa_ifl_bringup real_kmr_bringup.py
