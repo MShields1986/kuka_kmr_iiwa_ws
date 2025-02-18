@@ -24,7 +24,10 @@ services:
     #      memory: 100M
     network_mode: host
     ipc: host
-    #volumes:
-    #  - ./src:/catkin_ws/src
+    #privileged: true                         # Req'd for RViz and RealSense
+    #environment:                             # Req'd for RViz
+    #  - DISPLAY                              # Req'd for RViz
+    #volumes:                                 # Req'd for RViz
+    #  - $XAUTHORITY:/root/.Xauthority        # Req'd for RViz
     command: sleep infinity
     #command: roslaunch kmr_iiwa_ifl_bringup real_kmr_bringup.py

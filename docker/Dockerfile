@@ -40,7 +40,9 @@ RUN apt-get install -y \
     python3-catkin-tools \
     libzmq3-dev \
     libboost-dev \
-    ros-noetic-behaviortree-cpp-v3
+    ros-noetic-behaviortree-cpp-v3 \
+    ros-noetic-realsense2-camera \
+    ros-noetic-realsense2-description
 
 COPY ../src /catkin_ws/src
 
