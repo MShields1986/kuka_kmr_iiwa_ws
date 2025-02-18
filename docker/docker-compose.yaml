@@ -24,7 +24,7 @@ services:
     #      memory: 100M
     network_mode: host
     ipc: host
-    volumes:
-      - ./src:/catkin_ws/src
+    #volumes:
+    #  - ./src:/catkin_ws/src
     command: sleep infinity
     #command: roslaunch kmr_iiwa_ifl_bringup real_kmr_bringup.py
