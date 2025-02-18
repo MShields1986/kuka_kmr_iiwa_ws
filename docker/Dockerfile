@@ -10,7 +10,12 @@ SHELL ["/bin/bash", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
- && apt-get install -y git
+ && apt-get install -y \
+        git \
+        python3-pip \
+ && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash \
+ && apt-get install -y git-lfs \
+ && python3 -m pip install pyassimp
 
 # OpenVDB
 RUN apt-get install --no-install-recommends -y \
@@ -40,7 +45,10 @@ RUN apt-get install -y \
     python3-catkin-tools \
     libzmq3-dev \
     libboost-dev \
-    ros-noetic-behaviortree-cpp-v3
+    ros-noetic-behaviortree-cpp-v3 \
+    ros-noetic-realsense2-camera \
+    ros-noetic-realsense2-description\
+    ros-noetic-joy
 
 COPY ../src /catkin_ws/src
 
@@ -59,6 +67,8 @@ RUN source /opt/ros/noetic/setup.bash \
 # Modify the entry point
 RUN echo 'source /opt/ros/noetic/setup.bash' >> /root/.bashrc \
  && echo 'source /catkin_ws/devel/setup.bash' >> /root/.bashrc \
+ && echo 'export ROS_HOSTNAME=172.31.1.137' >> /ros_entrypoint.sh \
+ && echo 'export DISABLE_ROS1_EOL_WARNINGS=1' >> /ros_entrypoint.sh \
  && echo 'source /catkin_ws/devel/setup.bash' >> /ros_entrypoint.sh
 
 RUN sed -i '/exec "$@"/d' /ros_entrypoint.sh \

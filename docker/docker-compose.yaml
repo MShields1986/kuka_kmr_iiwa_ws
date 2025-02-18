@@ -1,11 +1,10 @@
-version: "3.9"
-
 name: on-robot
 
 services:
   on-robot:
     environment:
       - on-robot
+      - DISPLAY                              # Req'd for RViz
     env_file:
     - .env
     build:
@@ -24,7 +23,9 @@ services:
     #      memory: 100M
     network_mode: host
     ipc: host
-    volumes:
-      - ./src:/catkin_ws/src
-    command: sleep infinity
-    #command: roslaunch kmr_iiwa_ifl_bringup real_kmr_bringup.py
+    privileged: true                         # Req'd for RViz and USB hardware
+    volumes:                                 # Req'd for RViz
+      - $XAUTHORITY:/root/.Xauthority        # Req'd for RViz
+    # command: sleep infinity
+    command: roslaunch kmr_iiwa_ifl_bringup real_kmr_bringup.launch
+    # command: roscore
