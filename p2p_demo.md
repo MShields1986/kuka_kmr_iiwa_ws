@@ -56,7 +56,7 @@ roslaunch vdbfusion_ros vdbfusion.launch config_file_name:=737_window_section.ya
 roslaunch kmr_iiwa_ifl_bringup real_kmr_bringup.launch
 ```
 
-7. Once this is up you can put the robot into **Auto** and start the kuka_smart_servo program on the iiwa using the teach pendant
+7. Once this is up you can put the robot into **Auto** and start the "ROSSmartServo" program on the iiwa using the teach pendant
 8. Next perform some exploration of the map using the robot in order to have it get a good localisation estimate. Note that you may need to re-seed the initial estimate using RViz.
 9. Now you are free to start all of the following servers...
 ```shell
