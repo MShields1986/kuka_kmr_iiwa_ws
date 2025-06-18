@@ -67,8 +67,6 @@ RUN source /opt/ros/noetic/setup.bash \
 # Modify the entry point
 RUN echo 'source /opt/ros/noetic/setup.bash' >> /root/.bashrc \
  && echo 'source /catkin_ws/devel/setup.bash' >> /root/.bashrc \
- && echo 'export ROS_HOSTNAME=172.31.1.137' >> /ros_entrypoint.sh \
- && echo 'export DISABLE_ROS1_EOL_WARNINGS=1' >> /ros_entrypoint.sh \
  && echo 'source /catkin_ws/devel/setup.bash' >> /ros_entrypoint.sh
 
 RUN sed -i '/exec "$@"/d' /ros_entrypoint.sh \

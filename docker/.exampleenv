@@ -1,3 +1,12 @@
 # Create yourself an auth token with repo level access at https://github.com/settings/tokens
 GIT_USER_NAME=MShields1986
 GIT_ACCESS_TOKEN=YOUR_AUTH_TOKEN
+
+ROS_HOSTNAME=localhost
+ROS_MASTER_URI=http://localhost:11311
+
+#ROS_HOSTNAME=172.31.1.137
+#ROS_MASTER_URI=http://172.31.1.137:11311
+#ROS_IP=172.31.2.137
+
+DISABLE_ROS1_EOL_WARNINGS=1

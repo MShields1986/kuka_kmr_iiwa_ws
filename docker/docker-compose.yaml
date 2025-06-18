@@ -1,10 +1,9 @@
-name: on-robot
+name: p2p_kmr_iiwa
 
 services:
-  on-robot:
+  p2p_kmr_iiwa:
     environment:
       - on-robot
-      - DISPLAY                              # Req'd for RViz
     env_file:
     - .env
     build:
@@ -13,19 +12,121 @@ services:
       args:
         - GIT_USER_NAME=${GIT_USER_NAME}
         - GIT_ACCESS_TOKEN=${GIT_ACCESS_TOKEN}
-    #deploy:
-    #  resources:
-    #    limits:
-    #      cpus: '0.001'
-    #      memory: 500M
-    #    reservations:
-    #      cpus: '0.0001'
-    #      memory: 100M
+    image: p2p_kmr_iiwa:workspace
+    # command: sleep infinity
+
+  roscore:
+    image: p2p_kmr_iiwa:workspace
+    environment:
+      - "ROS_HOSTNAME=${ROS_HOSTNAME}"
+    healthcheck:
+      test: "/ros_entrypoint.sh rostopic list"
+      interval: 15s     # How often the status will be checked
+      retries: 5        # How many times to check before considering it unavailable
+      start_period: 10s # How long after startup to begin checks
+      timeout: 10s      # Timeout for each test run
     network_mode: host
     ipc: host
+    command: roscore
+
+  vdbfusion:
+    image: p2p_kmr_iiwa:workspace
+    depends_on:
+      roscore:
+        condition: service_healthy
+    environment:
+      - "ROS_MASTER_URI=${ROS_MASTER_URI}"
+      - "ROS_HOSTNAME=${ROS_HOSTNAME}"
+    network_mode: host
+    ipc: host
+    command: roslaunch vdbfusion_ros vdbfusion.launch config_file_name:=wing_cover.yaml
+
+  coupled_motion_controller:
+    image: p2p_kmr_iiwa:workspace
+    depends_on:
+      roscore:
+        condition: service_healthy
+    environment:
+      - "ROS_MASTER_URI=${ROS_MASTER_URI}"
+      - "ROS_HOSTNAME=${ROS_HOSTNAME}"
+    network_mode: host
+    ipc: host
+    command: roslaunch coupled_motion_controller init.launch
+
+  noether:
+    image: p2p_kmr_iiwa:workspace
+    depends_on:
+      roscore:
+        condition: service_healthy
+    environment:
+      - "ROS_MASTER_URI=${ROS_MASTER_URI}"
+      - "ROS_HOSTNAME=${ROS_HOSTNAME}"
+    network_mode: host
+    ipc: host
+    command: roslaunch noether_client init_simple.launch
+
+  view_planner:
+    image: p2p_kmr_iiwa:workspace
+    depends_on:
+      roscore:
+        condition: service_healthy
+    environment:
+      - "ROS_MASTER_URI=${ROS_MASTER_URI}"
+      - "ROS_HOSTNAME=${ROS_HOSTNAME}"
+    network_mode: host
+    ipc: host
+    command: roslaunch view_planner view_plan.launch rviz:=false
+
+  kmr_iiwa_bringup:
+    image: p2p_kmr_iiwa:workspace
+    depends_on:
+      roscore:
+        condition: service_healthy
+    environment:
+      - "ROS_MASTER_URI=${ROS_MASTER_URI}"
+      - "ROS_HOSTNAME=${ROS_HOSTNAME}"
+      - "DISABLE_ROS1_EOL_WARNINGS=${DISABLE_ROS1_EOL_WARNINGS}"
+      - DISPLAY                              # Req'd for RViz
     privileged: true                         # Req'd for RViz and USB hardware
     volumes:                                 # Req'd for RViz
       - $XAUTHORITY:/root/.Xauthority        # Req'd for RViz
-    # command: sleep infinity
+    network_mode: host
+    ipc: host
     command: roslaunch kmr_iiwa_ifl_bringup real_kmr_bringup.launch
-    # command: roscore
+
+  # fixture_tracker:
+  #   image: p2p_kmr_iiwa:workspace
+  #   depends_on:
+  #     roscore:
+  #       condition: service_healthy
+  #   environment:
+  #     - "ROS_MASTER_URI=${ROS_MASTER_URI}"
+  #     - "ROS_HOSTNAME=${ROS_HOSTNAME}"
+  #   privileged: true                         # Req'd for RViz and USB hardware
+  #   network_mode: host
+  #   ipc: host
+  #   command: roslaunch fixture_tracker single_fixture.launch rviz:=false stand_alone:=false
+
+  # peak:
+  #   image: p2p_kmr_iiwa:workspace
+  #   depends_on:
+  #     roscore:
+  #       condition: service_healthy
+  #   environment:
+  #     - "ROS_MASTER_URI=${ROS_MASTER_URI}"
+  #     - "ROS_HOSTNAME=${ROS_HOSTNAME}"
+  #   network_mode: host
+  #   ipc: host
+  #   command: roslaunch peak_ros init.launch
+
+  # behavior_tree:
+  #   image: p2p_kmr_iiwa:workspace
+  #   depends_on:
+  #     roscore:
+  #       condition: service_healthy
+  #   environment:
+  #     - "ROS_MASTER_URI=${ROS_MASTER_URI}"
+  #     - "ROS_HOSTNAME=${ROS_HOSTNAME}"
+  #   network_mode: host
+  #   ipc: host
+  #   command: roslaunch kmr_iiwa_ifl_behavior_tree init.launch
