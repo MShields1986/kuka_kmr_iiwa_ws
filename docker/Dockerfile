@@ -13,9 +13,28 @@ RUN apt-get update \
  && apt-get install -y \
         git \
         python3-pip \
+        wget \
+        ocl-icd-libopencl1 \
  && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash \
  && apt-get install -y git-lfs \
  && python3 -m pip install pyassimp
+
+
+# for Zivid Nvidia
+RUN mkdir -p /etc/OpenCL/vendors && \
+    echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
+
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+
+RUN wget --quiet \
+    https://downloads.zivid.com/sdk/releases/2.13.1+18e79e79-1/u20/amd64/zivid_2.13.1+18e79e79-1_amd64.deb \
+    https://downloads.zivid.com/sdk/releases/2.13.1+18e79e79-1/u20/amd64/zivid-tools_2.13.1+18e79e79-1_amd64.deb \
+    https://downloads.zivid.com/sdk/releases/2.13.1+18e79e79-1/u20/amd64/zivid-genicam_2.13.1+18e79e79-1_amd64.deb
+
+RUN apt-get update
+RUN apt-get install ./*.deb --assume-yes && rm ./*.deb
+
 
 # OpenVDB
 RUN apt-get install --no-install-recommends -y \
@@ -40,9 +59,11 @@ RUN git clone --depth 1 https://github.com/PRBonn/vdbfusion.git \
  && cmake .. \
  &&  make -j4 all install
 
+
 # catkin_ws
 RUN apt-get install -y \
     python3-catkin-tools \
+    python3-osrf-pycommon \
     libzmq3-dev \
     libboost-dev \
     ros-noetic-behaviortree-cpp-v3 \

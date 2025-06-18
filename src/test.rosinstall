@@ -9,10 +9,10 @@
 #    branch: (HEAD detached at 0.1.1)
 #    commit: 46ac798ea17010b3d514538e7c0178003d34e03e
 - git:
-    uri: https://github.com/UoS-EEE-Automation/eddyfi_ectane_ros.git
+    uri: https://github.com/UoS-EEE-Automation/eddyfi_ectane_ros
     local-name: eddyfi_ectane_ros
 #    branch: main
-#    commit: 43325f9a436c1c6e153433b6c3d713aa0f8ef697
+#    commit: fa2530043ea92654cfeea5e0589cdb7814197310
 - git:
     uri: https://github.com/UoS-EEE-Automation/eddyfi_ectane_sdk_ros.git
     local-name: eddyfi_ectane_sdk_ros
@@ -21,8 +21,8 @@
 - git:
     uri: https://github.com/UoS-EEE-Automation/fixture_tracker.git
     local-name: fixture_tracker
-#    branch: main
-#    commit: fb7fd488ff1246ae3bcd08ffc4635b00de732ac2
+#    branch: feature/zivid
+#    commit: 20a6e7419b0c0430a70ab602c0c1ca492637c390
 - git:
     uri: https://github.com/MShields1986/iiwa_stack.git
     local-name: iiwa_stack
@@ -36,28 +36,28 @@
 - git:
     uri: https://github.com/UoS-EEE-Automation/kmr_iiwa_coupled_motion_controller.git
     local-name: kmr_iiwa_coupled_motion_controller
-#    branch: main
-#    commit: 1a4d0b48575c3885f3e51c0570c8998a1655e56d
+#    branch: feature/no_arm_adjustments
+#    commit: 64be298fc6e8e17488665484fbb296c27c882c20
 - git:
     uri: https://github.com/UoS-EEE-Automation/kmr_iiwa_ifl.git
     local-name: kmr_iiwa_ifl
 #    branch: main
-#    commit: a81531ad2c7c6ec023d88426e2d23a3312a60fee
+#    commit: b8e81500a9017b19f5e4f0b0f517fa63416bb534
 - git:
     uri: https://github.com/UoS-EEE-Automation/kmr_iiwa_ifl_behavior_tree.git
     local-name: kmr_iiwa_ifl_behavior_tree
 #    branch: main
-#    commit: 07de3aee6eb799bb8a6c474a0c0be9e610a2a4ca
+#    commit: 135a903ca1626272a5477d2c5319c34c38376f16
 - git:
     uri: https://github.com/UoS-EEE-Automation/kmriiwa_ros_stack.git
     local-name: kmriiwa_ros_stack
-#    branch: feature/IFL_iiwa_integration
-#    commit: ee322f4831bca9f566dc01b84d732628b5b43530
+#    branch: main
+#    commit: a06b8cc9aded710c80897436151341c58e6e3d1d
 - git:
     uri: https://github.com/UoS-EEE-Automation/kmriiwa_tooled.git
     local-name: kmriiwa_tooled
-#    branch: lf_ec_probe
-#    commit: 46f61ae5cb1810096fefa6634118723685b93b91
+#    branch: main
+#    commit: 2a3ee76a552180dd1b21648ea8bdc4405ca41de2
 - git:
     uri: https://github.com/ros-industrial/noether.git
     local-name: noether
@@ -67,12 +67,17 @@
     uri: https://github.com/UoS-EEE-Automation/noether_client.git
     local-name: noether_client
 #    branch: main
-#    commit: aef830a430e088e2369b3bc57e5bd424ffef4180
+#    commit: 8701cbd32e100084be05fd5272b4765e1680900d
+- git:
+    uri: https://github.com/MShields1986/peak_ros.git
+    local-name: peak_ros
+#    branch: main
+#    commit: cf2542a59ed0d74c120311820d5522d12dc9c1b6
 - git:
     uri: https://github.com/MShields1986/realsense_launch.git
     local-name: realsense_launch
-#    branch: main
-#    commit: 0c40f2100ae7bdcdf7bff9c6a50dfb4a25de2d1d
+#    branch: feature/zivid
+#    commit: ecd96afa7bd48f1bf7c4412c3aa39e60a8ed7bb8
 - git:
     uri: https://github.com/ros-industrial/ros_industrial_cmake_boilerplate.git
     local-name: ros_industrial_cmake_boilerplate
@@ -82,9 +87,14 @@
     uri: https://github.com/UoS-EEE-Automation/vdbfusion_ros.git
     local-name: vdbfusion_ros
 #    branch: kmr_iiwa_integration
-#    commit: 58b55e2946dc9b45f759002443de4b9a2ab1baa8
+#    commit: 3c11647f48faa9559b8d49a853de4e80e874cd9d
 - git:
     uri: https://github.com/UoS-EEE-Automation/view_planner.git
     local-name: view_planner
 #    branch: main
-#    commit: 2d0d19f46e522de0999b7d7783a16174ebed6396
+#    commit: 7933dba37f734d9766a56bd9536eae89e1e37276
+- git:
+    uri: https://github.com/UoS-EEE-Automation/zivid-ros.git
+    local-name: zivid-ros
+#    branch: ros1-master
+#    commit: 4e9293896aa9794db1c498665bb0f02dc8297ed3

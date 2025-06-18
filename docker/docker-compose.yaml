@@ -103,6 +103,10 @@ services:
   #     - "ROS_MASTER_URI=${ROS_MASTER_URI}"
   #     - "ROS_HOSTNAME=${ROS_HOSTNAME}"
   #   privileged: true                         # Req'd for RViz and USB hardware
+  #   devices:
+  #     - driver: nvidia
+  #       count: all
+  #       capabilities: [gpu]
   #   network_mode: host
   #   ipc: host
   #   command: roslaunch fixture_tracker single_fixture.launch rviz:=false stand_alone:=false
